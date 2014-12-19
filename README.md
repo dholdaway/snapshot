@@ -18,5 +18,4 @@ And make it exectuable: chmod +x /opt/aws/snapshot.sh
 Then setup a crontab job for nightly backups:
 (You will have to specify the location of the AWS CLI Config file)
 
-AWS_CONFIG_FILE="/root/.aws/config"
-00 06 * * *     root    /opt/aws/snapshot.sh >> /var/log/snapshot.log 2>&1
+00 06 * * * export AWS_CONFIG_FILE=/root/.aws/config && /bin/bash /opt/aws/ebs-snapshot.sh > /var/log/ebs-snapshot.log 2>&1
